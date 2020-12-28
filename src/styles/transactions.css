@@ -1,0 +1,19 @@
+.delete{
+    background-color: red;
+    color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+}
+
+#transactions-container{
+    padding: 3vw;
+}
+.transaction-container{
+    align-content: center;
+    margin-bottom: 1vw;
+    border-style:outset;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr .5fr;
+}
+
