@@ -20,6 +20,17 @@ router.get('/transactions', async (req, res) => {
     }
 })
 
+// router.get('/transaction/categories', async (req, res) => {
+//     try {
+//         const transactions = await Transaction.aggregate()
+//         console.log('transactions', transactions)
+//         res.send(transactions)
+//     } catch (err) {
+//         console.log(err.message)
+//         res.send(err.message)
+//     }
+// })
+
 router.post('/transaction', async (req, res) => {
     console.log('trying to post transaction to db')
     const transaction = new Transaction({ ...req.body })

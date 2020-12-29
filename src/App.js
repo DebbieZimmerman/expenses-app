@@ -18,18 +18,22 @@ class App extends Component {
     try {
       const tempTransactions = (await axios.get(`http://localhost:4200/transactions`)).data
       console.log(tempTransactions)
-      let categories = this.tempTransactions.map(t => t.categories)
+      // let categories = this.tempTransactions.map(t => t.category).set()
       this.setState({ transactions: tempTransactions })
-      
+      // this.setState({categories})
+
     } catch (err) {
       console.log(err.message)
     }
   }
 
-  getTotal = (type) => {
-    return this.state.transactions.filter(t => t[category.toLowerCase()])
-    .map(t => t.amount)
-    .reduce()
+  filterByCategory = (category) => this.state.transactions.filter(t => t.category = [category])
+
+  reducer = (accumulator, currentValue) => accumulator + currentValue
+
+  getTotal = (category) => {
+    // const transactions = category ? this.filterByCategory(category) : [...this.state.transactions]
+    return  this.state.transactions.length && this.state.transactions.map(t => t.amount).reduce(this.reducer)
   }
 
   addTransaction = async (transaction, type) => {
@@ -56,7 +60,7 @@ class App extends Component {
             <span className="nav-item"><Link to="/transactions" style={{ textDecoration: 'none' }}>Transactions</Link></span>
           </div>
           <Route path="/" exact render={() => <Operations addTransaction={this.addTransaction} />} />
-          <Route path="/transactions" exact render={() => <Transactions transactions={this.state.transactions} updateTransactionsFromDB={this.updateTransactionsFromDB} deleteTransaction={this.deleteTransaction} />} />
+          <Route path="/transactions" exact render={() => <Transactions transactions={this.state.transactions} updateTransactionsFromDB={this.updateTransactionsFromDB} deleteTransaction={this.deleteTransaction} getTotal={this.getTotal} />} />
         </div>
       </Router>
     );
