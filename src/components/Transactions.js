@@ -14,7 +14,7 @@ class Transactions extends Component {
                 <div id="transactions-container">
                     {transactions.map(t => <Transaction transaction={t} deleteTransaction={this.props.deleteTransaction} key={t._id} />)}
                 </div>
-                <div id="balance">Balance: {this.props.getTotal()}</div>
+                {/* <div id="balance">Balance: {this.props.getTotal()}</div> */}
             </div>
         )
     }
