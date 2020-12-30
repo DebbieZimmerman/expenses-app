@@ -1,16 +1,24 @@
 .delete{
-    background-color: white;
-    color: red;
+    background-color: transparent;
+    color: black;
+    border-style: none;
 }
 
-#transactions-container{
+#transactions-page{
     padding: 3vw;
 }
+
+#balance{
+    justify-content: end;
+}
+
 .transaction-container{
     align-content: center;
     margin-bottom: 1vw;
     border-style:outset;
+    border-width: thin;
+    border-radius: 3px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr .5fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr .2fr;
 }
 

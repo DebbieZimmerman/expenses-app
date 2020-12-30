@@ -11,12 +11,12 @@ body {
   padding: 4px;
   margin-bottom: 5px;
   display: grid;
-  grid-template-areas: "n n n";
+  grid-template-areas: "n n n n";
 }
 
 .nav-item {
   justify-self: left;
-  margin: 10px;
+  margin: 2px;
   color: white;
   padding: 1px;
   color-adjust: white;

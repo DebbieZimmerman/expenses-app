@@ -7,7 +7,7 @@ class Operations extends Component {
     constructor() {
         super()
         this.state = {
-            amount: "",
+            amount: 0,
             vendor: "",
             category: "",
             date: ""
@@ -18,6 +18,15 @@ class Operations extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
+    validateInput = () => {
+        if(this.state.amount || this.state.vendor || this.state.category || this.state.date){
+            return true
+        } else {        
+            alert('Please enter all fields')
+            return false
+        }
+    }
+
     handleClick = (type) => {
         const transaction = this.state
         this.props.addTransaction(transaction, type)
@@ -25,13 +34,13 @@ class Operations extends Component {
     }
 
     clearInput = () => {
-        this.setState({ amount: "", vendor: "", category: "", date: "" })
+        this.setState({ amount: 0, vendor: "", category: "", date: "" })
     }
 
     render() {
         return (
             <div id="input-container">
-                <div className="input">Amount:<input id="amount" type="text" value={this.state.amount} onChange={this.updateInput}></input></div>
+                <div className="input">Amount:<input id="amount" type="number" value={this.state.amount} onChange={this.updateInput}></input></div>
                 <div className="input">Vendor:<input id="vendor" type="text" value={this.state.vendor} onChange={this.updateInput}></input></div>
                 <div className="input">Category:<input id="category" type="text" value={this.state.category} onChange={this.updateInput}></input></div>
                 <div className="input">Date:<input id="date" type="date" value={this.state.date} onChange={this.updateInput}></input></div>

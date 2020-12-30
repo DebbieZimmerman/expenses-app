@@ -34,9 +34,9 @@ class App extends Component {
 
   reducer = (accumulator, currentValue) => accumulator + currentValue
 
-  getTotal = (category) => {
+  getTotal = (transactions) => {
     // const transactions = category ? this.filterByCategory(category) : [...this.state.transactions]
-    return this.state.transactions.length && this.state.transactions.map(t => t.amount).reduce(this.reducer)
+    return transactions.length && transactions.map(t => t.amount).reduce(this.reducer)
   }
 
   addTransaction = async (transaction, type) => {
