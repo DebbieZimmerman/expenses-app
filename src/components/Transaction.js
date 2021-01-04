@@ -11,7 +11,7 @@ class Transaction extends Component {
     render () {
         const transaction = this.props.transaction
         return(
-            <div className="transaction-container" style={{backgroundColor: transaction.amount > 0 ? 'rgb(236, 86, 86)' : 'rgb(91, 235, 78)'}}>
+            <div className="transaction-container" style={{backgroundColor: transaction.amount > 0 ? 'rgb(91, 235, 78)' : 'rgb(236, 86, 86)'}}>
                 <span className="category">{transaction.category}</span>
                 <span className="vendor">{transaction.vendor}</span>
                 <span className="transaction">{transaction.amount}</span>
