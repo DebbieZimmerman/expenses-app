@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Transaction from './Transaction'
-
+import Table_Headings from './Table_Headings'
 import '../styles/transactions.css'
 
 class Transactions extends Component {
@@ -11,11 +11,12 @@ class Transactions extends Component {
         const transactions = this.props.transactions
         return (
             <div id="transactions-page">
+                {this.props.show && <Table_Headings />}
                 <div id="transactions-container">
-                    {this.props.show 
-                    && transactions.map(t => <Transaction transaction={t} deleteTransaction={this.props.deleteTransaction} key={t._id} />)}
+                    {this.props.show
+                        && transactions.map(t => <Transaction transaction={t} deleteTransaction={this.props.deleteTransaction} key={t._id} />)}
                 </div>
-                <div id="balance">Balance: {this.props.getTotal(transactions)}</div>
+                <div className="balance">Balance: {this.props.getTotal(transactions)}</div>
             </div>
         )
     }

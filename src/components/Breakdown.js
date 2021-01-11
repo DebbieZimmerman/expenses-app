@@ -25,13 +25,13 @@ class Breakdown extends Component {
 
     render() {
         const transactions = this.props.transactions
-        const categories = this.props.categories
+        const categories = this.props.categories.sort()
 
         return (
             <div id="breakdown-container">
                 {transactions && categories.map(c =>
                 
-                    <div className="category-name" onClick={()=>this.toggle(c)}>{c}
+                    <div className="category-name" key={c} onClick={()=>this.toggle(c)}>{c}
                         { <Transactions
                                 transactions={transactions.filter(t => t.category === c)}
                                 updateTransactionsFromDB={this.props.updateTransactionsFromDB}
@@ -42,7 +42,8 @@ class Breakdown extends Component {
                         }
                     </div>)}
             </div>
-        )
+     
+     )
     }
 }
 

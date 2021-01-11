@@ -8,17 +8,31 @@
     padding: 3vw;
 }
 
-#balance{
-    justify-content: end;
+.balance{
+    display: flex;
+    padding-left: 30vw;
+    font-weight: 600;
 }
 
 .transaction-container{
-    align-content: center;
-    margin-bottom: 1vw;
-    border-style:outset;
-    border-width: thin;
+    align-items: center;
+    margin-bottom: 2vw;
+    padding: 1vh;
+    border-style: hidden;
     border-radius: 3px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr .2fr;
+    grid-template-columns: 3fr 3fr 2fr 3fr 1fr;
 }
 
+.transactions-categories{
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 1vw;
+    display: grid;
+    grid-template-columns: 3fr 3fr 2fr 3fr 1fr;
+    font-weight: 600;
+}
+
+.category-name{
+    font-weight: 600;
+}

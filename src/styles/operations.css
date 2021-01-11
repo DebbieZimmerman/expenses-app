@@ -2,17 +2,23 @@
 @media (orientation: portrait) {   
   #input-container {
     display: grid;
-    grid-template-rows: repeat(1fr);
     justify-content: center;
     align-content: center;
     margin-top: 10vh;
+    margin-left: 7vw;
+    margin-right: 7vw;
+    padding: 3vh;
+    border-style:solid;
+    border-width: 1px 1px .5px .5px;
+    border-color: rgb(94, 91, 91);
+    border-radius: 5px;
   }
   
   .input {
     display: grid;
     grid-template-columns: 20vw 40vw;
     width:max-content;
-    padding: 1vh;
+    padding: 2vh;
     height: fit-content;
     font-size: large;
     border: none;
@@ -26,7 +32,7 @@
   button{
       background-color: rgb(69, 182, 124);
       color: white;
-      width: 20vw;
+      width: 25vw;
       padding: 2vw;
       margin-top: 5vw;
       border-radius: 5px;
@@ -34,7 +40,7 @@
   }
 
   #withdrawal{
-      margin-left: 20vw;
+      margin-left: 15vw;
   }
 
   #deposit{
