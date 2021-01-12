@@ -1,0 +1,39 @@
+.delete{
+    background-color: transparent;
+    color: black;
+    border-style: none;
+}
+
+#transactions-page{
+    padding: 3vw;
+}
+
+.balance{
+    display: flex;
+    padding-left: 30vw;
+    font-weight: 600;
+}
+
+.transaction-container{
+    align-items: center;
+    margin-bottom: 2vw;
+    padding: 1vh;
+    border-style: hidden;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 4fr 4fr 3fr 4fr 1fr;
+}
+
+.transactions-categories{
+    align-items: center;
+    justify-items: left;
+    margin-bottom: 1vw;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr 3fr 1fr;
+    font-weight: 600;
+    grid-column-gap: 2px;
+}
+
+.category-name{
+    font-weight: 600;
+}
