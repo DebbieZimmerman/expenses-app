@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import '../styles/operations.css'
 
@@ -18,19 +18,16 @@ class Operations extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
-    validateInput = () => {
-        if(this.state.amount || this.state.vendor || this.state.category || this.state.date){
-            return true
-        } else {        
-            alert('Please enter all fields')
-            return false
-        }
-    }
-
+    validateInput = () => this.state.amount && this.state.vendor && this.state.category && this.state.date
+        
     handleClick = (type) => {
-        const transaction = this.state
-        this.props.addTransaction(transaction, type)
-        this.clearInput()
+        if (this.validateInput()) {
+            const transaction = this.state
+            this.props.addTransaction(transaction, type)
+            this.clearInput()
+        } else {
+            alert('Please enter all fields')
+        }
     }
 
     clearInput = () => {
@@ -45,12 +42,18 @@ class Operations extends Component {
                 <div className="input">Category:<input id="category" type="text" value={this.state.category} onChange={this.updateInput}></input></div>
                 <div className="input">Date:<input id="date" type="date" value={this.state.date} onChange={this.updateInput}></input></div>
                 <div className="input">
-                    <Link to="/transactions" style={{ textDecoration: 'none' }}>
-                        <button id="deposit" onClick={() => this.handleClick("deposit")}>Deposit</button>
-                    </Link>
-                    <Link to="/transactions" style={{ textDecoration: 'none' }}>
-                        <button id="withdrawal" onClick={() => this.handleClick("withdrawal")}>Withdrawal</button>
-                    </Link>
+
+                    <button id="deposit" onClick={() => this.handleClick("deposit")}>
+                        <Link to="/transactions" style={{ textDecoration: 'none' }}>
+                            Deposit
+                                </Link>
+                    </button>
+                    <button id="withdrawal" onClick={() => this.handleClick("withdrawal")}>
+                        <Link to="/transactions" style={{ textDecoration: 'none' }}>
+                            Withdrawal
+                            </Link>
+                    </button>
+
                 </div>
             </div>
         )

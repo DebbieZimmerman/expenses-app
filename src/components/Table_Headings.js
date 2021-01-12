@@ -8,10 +8,10 @@ class Table_Headings extends Component {
         return (
                     <div className="transactions-categories">
                         <span className="category">Category</span>
-                        <span className="vendor">Vendor</span>
-                        <span className="transaction">Amount</span>
-                        <span className="date">Date</span>
-                        <span className="delete">Delete</span>
+                        <span className="category">Vendor</span>
+                        <span className="category">Amount</span>
+                        <span className="category">Date</span>
+                        <span className="category">Delete</span>
                     </div>
         )
     }

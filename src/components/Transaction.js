@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
+import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
 moment().format();
-// import '../styles/transaction.css'
 
 class Transaction extends Component {
 
-    deleteTransaction= ({target}) => this.props.deleteTransaction(target.id)
-
+    deleteTransaction= () => {
+        this.props.deleteTransaction(this.props.transaction._id)
+    }
+    
     render () {
         const transaction = this.props.transaction
         return(
@@ -15,8 +16,8 @@ class Transaction extends Component {
                 <span className="category">{transaction.category}</span>
                 <span className="vendor">{transaction.vendor}</span>
                 <span className="transaction">{transaction.amount}</span>
-                <span className="date">{moment(transaction.date).format('L')}</span>
-                <span id={transaction._id} className="delete" onClick={this.deleteTransaction}><DeleteSweepIcon /></span>
+                <span className="date">{moment(transaction.date).format('DD/MM/YY')}</span>
+                <span id={transaction._id} className="delete" onClick={this.deleteTransaction}><DeleteIcon /></span>
             </div>
         )
     }

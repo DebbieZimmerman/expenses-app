@@ -17,7 +17,7 @@ class App extends Component {
 
   updateTransactionsFromDB = async () => {
     try {
-      const tempTransactions = (await axios.get(`http://localhost:4200/transactions`)).data
+      const { data: tempTransactions } = await axios.get(`http://localhost:4200/transactions`)
       this.setState({ transactions: tempTransactions })
       this.updateCategories()
     } catch (err) {
@@ -27,7 +27,7 @@ class App extends Component {
 
   updateCategories = () => {
     let tempCategories = this.state.transactions.length && [...new Set(this.state.transactions.map(t => t.category))]
-    this.setState({categories: tempCategories})
+    this.setState({ categories: tempCategories })
   }
 
   reducer = (accumulator, currentValue) => accumulator + currentValue
@@ -41,12 +41,16 @@ class App extends Component {
       transaction.amount = transaction.amount * -1
     }
     await axios.post(`http://localhost:4200/transaction`, transaction)
-    await this.updateTransactionsFromDB()
+    this.updateTransactionsFromDB()
   }
 
   deleteTransaction = async (id) => {
-    await axios.delete(`http://localhost:4200/transaction/${id}`)
-    await this.updateTransactionsFromDB()
+    try {
+      await axios.delete(`http://localhost:4200/transaction/${id}`)
+      this.updateTransactionsFromDB()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {
@@ -61,7 +65,7 @@ class App extends Component {
           </div>
           <Route path="/" exact render={() => <Operations addTransaction={this.addTransaction} />} />
           <Route path="/transactions" exact render={() => <Transactions transactions={this.state.transactions} updateTransactionsFromDB={this.updateTransactionsFromDB} deleteTransaction={this.deleteTransaction} getTotal={this.getTotal} show={true} />} />
-          <Route path="/breakdown" exact render={() => <Breakdown updateTransactionsFromDB={this.updateTransactionsFromDB} transactions={this.state.transactions} categories={this.state.categories} deleteTransaction={this.deleteTransaction} getTotal={this.getTotal}/>} />
+          <Route path="/breakdown" exact render={() => <Breakdown updateTransactionsFromDB={this.updateTransactionsFromDB} transactions={this.state.transactions} categories={this.state.categories} deleteTransaction={this.deleteTransaction} getTotal={this.getTotal} />} />
         </div>
       </Router>
     );
