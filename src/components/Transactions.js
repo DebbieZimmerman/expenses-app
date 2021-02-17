@@ -4,6 +4,18 @@ import Table_Headings from './Table_Headings'
 import '../styles/transactions.css'
 
 class Transactions extends Component {
+    constructor() {
+        super()
+        this.state = {
+            startDate: "",
+            endDate: ""
+        }
+    }
+
+    updateInput = (e) => {
+        this.setState({ [e.target.id]: e.target.value })
+    }
+
 
     componentDidMount = async () => await this.props.updateTransactionsFromDB()
 
@@ -11,6 +23,8 @@ class Transactions extends Component {
         const transactions = this.props.transactions
         return (
             <div id="transactions-page">
+                <div className="input">Date:<input id="startDate" type="date" value={this.state.startDate} onChange={this.updateInput}></input></div>
+                <div className="input">Date:<input id="endDate" type="date" value={this.state.endDate} onChange={this.updateInput}></input></div>
                 {this.props.show && <Table_Headings />}
                 <div id="transactions-container">
                     {this.props.show

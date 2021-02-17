@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Transactions from './Transactions'
+import BreakdownTransactions from './BreakdownTransactions'
 
 import '../styles/transactions.css'
 
@@ -31,12 +31,14 @@ class Breakdown extends Component {
             <div id="breakdown-container">
                 {transactions && categories.map(c =>
                 
-                    <div className="category-name" key={c} onClick={()=>this.toggle(c)}>{c}
-                        { <Transactions
+                    <div className="category-name" key={c} onClick={()=>this.toggle(c)}>
+                        { <BreakdownTransactions
+                                category = {c}
                                 transactions={transactions.filter(t => t.category === c)}
                                 updateTransactionsFromDB={this.props.updateTransactionsFromDB}
                                 deleteTransaction={this.props.deleteTransaction}
                                 getTotal={this.props.getTotal}
+                                toggle={this.toggle}
                                 show={this.state.show[c]}
                                 key={c} />
                         }
